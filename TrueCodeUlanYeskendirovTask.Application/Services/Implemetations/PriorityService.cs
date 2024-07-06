@@ -20,6 +20,9 @@ public class PriorityService : IPriorityService
 
     public async Task AddPriorityAsync(int id)
     {
+        if(id <= 0)
+            throw new ArgumentException("Priority level should be greater than 0");
+        
         await _priorityRepository.AddAsync(new Priority { Level = id });
     }
 
